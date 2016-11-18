@@ -1,11 +1,13 @@
 <template>
-  <member-layout></member-layout>
+  <home-layout></home-layout>
 </template>
 
 <script>
   import ProfileLayout from './Profile/ProfileLayout'
   import MemberLayout from './Member/MemberLayout'
+  import HomeLayout from './Home/HomeLayout'
+
   export default{
-    components: {ProfileLayout, MemberLayout}
+    components: {ProfileLayout, MemberLayout, HomeLayout}
   }
 </script>
