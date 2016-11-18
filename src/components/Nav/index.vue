@@ -5,10 +5,19 @@
         <router-link class="navbar-brand" to="/"><b>MySocial</b></router-link>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/profile">Profile</router-link></li>
-          <li><router-link to="/login">Logout</router-link></li>
+        <ul v-if="auth.login" class="nav navbar-nav navbar-right">
+          <li>
+            <router-link to="/">Home</router-link>
+          </li>
+          <li>
+            <router-link :to="{ path: auth.username }">Profile</router-link>
+          </li>
+          <li><a @click="logout">Logout</a></li>
+        </ul>
+        <ul v-if="!auth.login" class="nav navbar-nav navbar-right">
+          <li>
+            <router-link to="/login">Login</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -16,7 +25,18 @@
 </template>
 
 <script>
-  import VueRouter from 'vue-router'
+  import { mapState } from 'vuex'
+  import { AUTH } from '../../store/types'
 
-  export default{}
+  export default{
+    computed: mapState([
+      'auth'
+    ]),
+    methods: {
+      logout: function() {
+        this.$store.dispatch(AUTH.LOGOUT)
+          .then(this.$router.push('login'))
+      }
+    }
+  }
 </script>
