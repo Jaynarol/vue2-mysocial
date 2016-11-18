@@ -1,28 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <nav-layout></nav-layout>
+    <div class="container page-content">
+      <main-layout></main-layout>
+      <side-layout></side-layout>
+    </div>
+    <foot-layout></foot-layout>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+  import NavLayout from './components/layouts/NavLayout'
+  import MainLayout from './components/layouts/MainLayout'
+  import SideLayout from './components/layouts/SideLayout'
+  import FootLayout from './components/layouts/FootLayout'
 
-export default {
-  name: 'app',
-  components: {
-    Hello
+  export default {
+    name: 'app',
+    components: {
+      NavLayout, MainLayout, SideLayout, FootLayout
+    }
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
