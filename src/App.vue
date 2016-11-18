@@ -10,15 +10,10 @@
 </template>
 
 <script>
-  import NavLayout from './components/layouts/NavLayout'
-  import MainLayout from './components/layouts/MainLayout'
-  import SideLayout from './components/layouts/SideLayout'
-  import FootLayout from './components/layouts/FootLayout'
+  import NavLayout from './components/NavLayout'
+  import MainLayout from './components/Main/MainLayout'
+  import SideLayout from './components/Side/SideLayout'
+  import FootLayout from './components/FootLayout'
 
-  export default {
-    name: 'app',
-    components: {
-      NavLayout, MainLayout, SideLayout, FootLayout
-    }
-  }
+  export default {name: 'app', components: {NavLayout, MainLayout, SideLayout, FootLayout}}
 </script>
