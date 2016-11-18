@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HomeLayout from '../components/Main/Home/HomeLayout'
-import MemberLayout from '../components/Main/Member/MemberLayout'
-import ProfileLayout from '../components/Main/Profile/ProfileLayout'
+import Home from '../components/Main/Home'
+import Member from '../components/Main/Member'
+import Profile from '../components/Main/Profile'
 
 Vue.use(Router)
 
@@ -13,17 +13,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: HomeLayout
+      component: Home
     },
     {
       path: '/login',
       name: 'login',
-      component: MemberLayout
+      component: Member
     },
     {
       path: '/profile',
       name: 'profile',
-      component: ProfileLayout
+      component: Profile
     },
     {
       path: '*',
