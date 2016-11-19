@@ -1,4 +1,5 @@
-import {AUTH} from '../types'
+import { apiLoginRequest } from '../../api/auth'
+import { AUTH } from '../types'
 
 const initial = {
   token: null,
@@ -21,8 +22,7 @@ export default {
   actions: {
     [AUTH.LOGIN] ({commit}, {username, password}) {
       return new Promise((resolve, reject) => {
-        const apiResponse = {username, token:'faketoken'}
-        commit('AuthLoginSuccess', apiResponse)
+        commit('AuthLoginSuccess', apiLoginRequest(username, password))
         resolve()
       })
     },

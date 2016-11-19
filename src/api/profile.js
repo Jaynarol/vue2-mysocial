@@ -1,9 +1,10 @@
 import { profileMock } from './mocks'
+import store from 'vuex'
 
-export const fetchProfileApi = function(fetch_username) {
+export const apiFetchProfile = function(profile) {
   return new Promise((resolve, reject) => {
     setTimeout(()=> {
-      const found_profile = profileMock.find(({username}) => username === fetch_username)
+      const found_profile = profileMock.find(({username}) => username === profile)
       if ( found_profile ) {
         resolve(found_profile)
       } else {

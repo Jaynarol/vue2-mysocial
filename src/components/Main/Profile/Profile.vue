@@ -9,15 +9,16 @@
         <li>Posts: <span>{{profile.posts}}</span></li>
       </ul>
     </div>
-    <div class="center-block text-center" v-if="!profile.isme" >
-      <button class="btn" :class="{'btn-success': profile.mefollow || hoverFollowButton}" @mouseover="hoverFollowButton=true" @mouseout="hoverFollowButton=false" >{{ profile.mefollow ? hoverFollowButton ? 'Unfollow' : 'Following' : 'Follow'}}</button>
+    <div class="center-block text-center" v-if="profile.username!=auth.username">
+      <button class="btn" :class="{'btn-success': profile.mefollow || hoverFollowButton}" @mouseover="hoverFollowButton=true" @mouseout="hoverFollowButton=false">{{ profile.mefollow ? hoverFollowButton ? 'Unfollow' : 'Following' : 'Follow'}}</button>
     </div>
   </div>
 </template>
 
 
 <script>
-  import { fetchProfileApi } from '../../../api/profile'
+  import { mapState } from 'vuex'
+  import { apiFetchProfile } from '../../../api/profile'
 
   const profileInitial = {
     username: '',
@@ -40,13 +41,14 @@
         hoverFollowButton: false
       }
     },
+    computed: mapState(['auth']),
     watch: {
       '$route': 'fetchProfile'
     },
     methods: {
       fetchProfile(){
-        const username = this.$store.state.route.params.profile;
-        fetchProfileApi(username)
+        const profile = this.$store.state.route.params.profile;
+        apiFetchProfile(profile)
                 .then((profile_result) => Object.assign(this.profile, profile_result))
                 .catch(() => this.$router.push({name: 'home'}))
       }
