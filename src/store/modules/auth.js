@@ -11,17 +11,11 @@ export default {
   state: JSON.parse(localStorage.getItem('auth') || JSON.stringify(initial)),
   mutations: {
     AuthLoginSuccess (state, {username, name, token}) {
-      state.login = true
-      state.username = username
-      state.token = token
-      state.name = name
+      Object.assign(state, {login: true, username, name, token})
       localStorage.setItem('auth', JSON.stringify(state))
     },
     AuthLogOutSuccess (state) {
-      state.login = false
-      state.username = null
-      state.token = null
-      state.name = null
+      Object.assign(state, initial)
       localStorage.removeItem('auth')
     }
   },

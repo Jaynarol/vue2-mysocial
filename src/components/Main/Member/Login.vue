@@ -25,8 +25,8 @@
   export default{
     data: function() {
       return {
-        username: '',
-        password: ''
+        username: 'jaynarol',
+        password: '1234'
       }
     },
     methods: {

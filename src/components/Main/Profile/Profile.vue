@@ -1,12 +1,12 @@
 <template>
   <div class="main-box clearfix">
-    <h2>John Breakgrow jr.</h2>
-    <img src="/static/imgs/friends/guy-3.jpg" alt="" class="profile-img img-responsive center-block show-in-modal">
+    <h2>{{profile.name}}</h2>
+    <img :src="profile.image" alt="" width="120" height="120" class="profile-img img-responsive center-block show-in-modal">
     <div class="profile-details" >
       <ul>
-        <li>Following: <span>456</span></li>
-        <li>Followers: <span>828</span></li>
-        <li>Posts: <span>1024</span></li>
+        <li>Following: <span>{{profile.following}}</span></li>
+        <li>Followers: <span>{{profile.followers}}</span></li>
+        <li>Posts: <span>{{profile.posts}}</span></li>
       </ul>
     </div>
     <div class="center-block text-center">
@@ -15,8 +15,27 @@
   </div>
 </template>
 
+
 <script>
-  export default{}
+  import {mapState} from 'vuex'
+  import {PROFILE} from '../../../store/types'
+
+  export default{
+    created () {
+       this.fetchProfile()
+    },
+    watch: {
+      '$route': 'fetchProfile'
+    },
+    methods: {
+      fetchProfile(){
+        const username = this.$store.state.route.params.profile;
+        this.$store.dispatch(PROFILE.FETCH, username)
+           .catch(() => this.$router.push({name: 'home'}))
+      }
+    },
+    computed: mapState(['profile'])
+  }
 </script>
 
 
