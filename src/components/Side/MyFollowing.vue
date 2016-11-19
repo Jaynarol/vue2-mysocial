@@ -1,10 +1,14 @@
 <template>
-  <router-link to="/profile" class="list-group-item">
-    <img src="/static/imgs/friends/guy-2.jpg" class="img-chat img-thumbnail">
-    <span class="chat-user-name">Jeferh Smith</span>
+  <router-link :to="friend.username" class="list-group-item">
+    <img :src="friend.image" class="img-chat img-thumbnail">
+    <span class="chat-user-name">{{friend.name}}</span>
   </router-link>
 </template>
 
 <script>
-  export default{}
+  export default{
+    props:{
+      friend: Object
+    }
+  }
 </script>

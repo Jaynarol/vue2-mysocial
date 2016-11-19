@@ -10,14 +10,14 @@ const initial = {
 export default {
   state: JSON.parse(localStorage.getItem('auth') || JSON.stringify(initial)),
   mutations: {
-    LoginSuccess (state, {username, name, token}) {
+    AuthLoginSuccess (state, {username, name, token}) {
       state.login = true
       state.username = username
       state.token = token
       state.name = name
       localStorage.setItem('auth', JSON.stringify(state))
     },
-    LogOutSuccess (state) {
+    AuthLogOutSuccess (state) {
       state.login = false
       state.username = null
       state.token = null
@@ -29,13 +29,13 @@ export default {
     [AUTH.LOGIN] ({commit}, {username, password}) {
       return new Promise((resolve, reject) => {
         const apiResponse = {username, name: username, token:'faketoken'}
-        commit('LoginSuccess', apiResponse)
+        commit('AuthLoginSuccess', apiResponse)
         resolve()
       })
     },
     [AUTH.LOGOUT] ({commit}) {
       return new Promise((resolve, reject) => {
-        commit('LogOutSuccess')
+        commit('AuthLogOutSuccess')
         resolve()
       })
     }

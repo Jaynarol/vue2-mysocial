@@ -33,7 +33,7 @@
       'auth'
     ]),
     methods: {
-      logout: function() {
+      logout() {
         this.$store.dispatch(AUTH.LOGOUT)
           .then(this.$router.push('login'))
       }

@@ -17,9 +17,7 @@
   import FootLayout from './Foot'
 
   export default {
-    computed: mapState([
-      'auth'
-    ]),
+    computed: mapState(['auth']),
     components: {NavLayout, MainLayout, SideLayout, FootLayout}
   }
 
