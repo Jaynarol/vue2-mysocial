@@ -12,7 +12,7 @@
           <li>
             <router-link :to="{ path: auth.username }">Profile</router-link>
           </li>
-          <li><a @click="logout">Logout</a></li>
+          <li><a @click.prevent="logout" href="#">Logout</a></li>
         </ul>
         <ul v-if="!auth.login" class="nav navbar-nav navbar-right">
           <li>

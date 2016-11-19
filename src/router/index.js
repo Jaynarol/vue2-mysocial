@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {AUTH} from '../store/types'
-
 import Home from '../components/Main/Home'
 import Member from '../components/Main/Member'
 import Profile from '../components/Main/Profile'
