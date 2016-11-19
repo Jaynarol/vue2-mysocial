@@ -1,9 +1,12 @@
 import { FRIENDS } from '../types'
 
 const mockFriends = [
-  {username: 'jefer', name: 'Jefer Smitch', image: '/static/imgs/friends/guy-2.jpg'},
-  {username: 'kodia', name: 'Kodia Nonoma', image: '/static/imgs/friends/guy-9.jpg'},
-  {username: 'aliss', name: 'Aliss Avenue', image: '/static/imgs/friends/woman-1.jpg'},
+  {username: 'jefer', name: 'Jefer Smitch', image: '/static/imgs/friends/guy-2.jpg', mefollow: true, followme: false},
+  {username: 'kodia', name: 'Kodia Nonoma', image: '/static/imgs/friends/guy-9.jpg', mefollow: true, followme: true},
+  {username: 'aliss', name: 'Aliss Avenue', image: '/static/imgs/friends/woman-1.jpg', mefollow: false, followme: true},
+  {username: 'dokey', name: 'Dokey Surface', image: '/static/imgs/friends/child-1.jpg', mefollow: false, followme: true},
+  {username: 'ashe', name: 'Ashe Romanop', image: '/static/imgs/friends/woman-2.jpg', mefollow: true, followme: true},
+  {username: 'jonh', name: 'Jonh Umblura', image: '/static/imgs/friends/guy-8.jpg', mefollow: true, followme: true},
 ]
 
 export default {
@@ -16,7 +19,8 @@ export default {
   },
   actions: {
     [FRIENDS.FETCH]({commit}){
-      commit('FriendFetchSuccess', mockFriends)
+      const apiResponse = mockFriends
+      commit('FriendFetchSuccess', apiResponse)
     }
   }
 }

@@ -1261,9 +1261,6 @@ h4, .h4 {
 
 /*============= Online Users Sidebar =================*/
 
-.chat-sidebar .list-group {
-  height: 94%;
-}
 
 .chat-sidebar ~ .nav-controller > .controller-open {
     display: inline-block;
