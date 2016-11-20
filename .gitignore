@@ -6,3 +6,6 @@ test/unit/coverage
 test/e2e/reports
 selenium-debug.log
 .idea
+database.rules.json
+firebase.json
+.firebaserc
