@@ -85,10 +85,12 @@ export const apiFetchFriends = (auth_username) => {
   return Mock.filter(({username})=>username!==auth_username).map(({username, name, image, mefollow, followme}) => ({username, name, image, mefollow, followme}))
 }
 
-export const apiUpdateFollow = (profile, follow) => {
-  const user = Mock.find(({username})=>username===profile)
-  user.mefollow = follow
-  user.followers += follow? 1 : -1
+export const apiUpdateFollow = (auth_username, profile_username, follow) => {
+  const profile_user = Mock.find(({username})=>username===profile_username)
+  const auth_user = Mock.find(({username})=>username===auth_username)
+  profile_user.mefollow = follow
+  profile_user.followers += follow? 1 : -1
+  auth_user.following += follow? 1 : -1
 }
 
 export const apiFetchPost = (profile) => {
@@ -107,7 +109,6 @@ export const apiFetchHomePost = () => {
       .sort(()=> 0.2 - Math.random())
       .slice(0, 10)
 }
-
 
 export const apiPostStatus = (profile, status) => {
   const date = new Date()

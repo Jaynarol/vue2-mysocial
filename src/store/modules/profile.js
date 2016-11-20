@@ -12,17 +12,17 @@ export default {
         }, 200 /* simulate delay connect api server */)
       })
     },
-    [PROFILE.FOLLOW]({commit}, profile){
+    [PROFILE.FOLLOW]({commit, rootState}, profile){
       return new Promise((resolve, reject) => {
-        apiUpdateFollow(profile, true)
+        apiUpdateFollow(rootState.auth.username, profile, true)
 
         commit('FriendFollow', profile)
         resolve(true)
       })
     },
-    [PROFILE.UNFOLLOW]({commit}, profile){
+    [PROFILE.UNFOLLOW]({commit, rootState}, profile){
       return new Promise((resolve, reject) => {
-        apiUpdateFollow(profile, false)
+        apiUpdateFollow(rootState.auth.username, profile, false)
 
         commit('FriendUnfollow', profile)
         resolve(false)
