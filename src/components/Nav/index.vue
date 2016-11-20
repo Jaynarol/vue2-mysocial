@@ -35,7 +35,7 @@
     methods: {
       logout() {
         this.$store.dispatch(AUTH.LOGOUT)
-          .then(this.$router.push('login'))
+                .then(this.$router.push('login'))
       }
     }
   }

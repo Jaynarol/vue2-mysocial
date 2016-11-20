@@ -18,7 +18,7 @@
 
 <script>
   import { mapState } from 'vuex'
-  import { apiFetchProfile } from '../../../api/profile'
+  import { PROFILE } from '../../../store/types'
 
   const profileInitial = {
     username: '',
@@ -41,14 +41,15 @@
         hoverFollowButton: false
       }
     },
-    computed: mapState(['auth']),
+    computed: {
+      ...mapState(['auth', 'route'])
+    },
     watch: {
       '$route': 'fetchProfile'
     },
     methods: {
       fetchProfile(){
-        const profile = this.$store.state.route.params.profile;
-        apiFetchProfile(profile)
+        this.$store.dispatch(PROFILE.FETCH, this.route.params.profile)
                 .then((profile_result) => Object.assign(this.profile, profile_result))
                 .catch(() => this.$router.push({name: 'home'}))
       }

@@ -1,5 +1,6 @@
-import { apiLoginRequest } from '../../api/auth'
 import { AUTH } from '../types'
+
+const mock = (username) => ({username, token:'faketoken'})
 
 const initial = {
   token: null,
@@ -22,7 +23,7 @@ export default {
   actions: {
     [AUTH.LOGIN] ({commit}, {username, password}) {
       return new Promise((resolve, reject) => {
-        commit('AuthLoginSuccess', apiLoginRequest(username, password))
+        commit('AuthLoginSuccess', mock(username))
         resolve()
       })
     },

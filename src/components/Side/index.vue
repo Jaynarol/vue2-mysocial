@@ -25,6 +25,7 @@
       this.$store.dispatch(FRIENDS.FETCH)
     },
     computed: {
+      ...mapState(['friends']),
       myfriends(){
         return this.friends.filter(({mefollow, followme})=>mefollow && followme)
       },
@@ -33,8 +34,7 @@
       },
       myfollowers(){
         return this.friends.filter(({mefollow, followme})=>!mefollow && followme)
-      },
-      ...mapState(['friends'])
+      }
     },
     components: {MyFriend}
   }
