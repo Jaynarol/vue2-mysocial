@@ -22,7 +22,7 @@
 
   export default{
     mounted() {
-      this.$store.dispatch(FRIENDS.FETCH)
+      this.$store.dispatch(FRIENDS.FETCH_DETAIL)
     },
     computed: {
       ...mapState(['friends']),

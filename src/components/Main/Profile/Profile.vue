@@ -6,7 +6,7 @@
       <ul>
         <li>Following: <span>{{profile.following}}</span></li>
         <li>Followers: <span>{{profile.followers}}</span></li>
-        <li>Posts: <span>{{profile.posts}}</span></li>
+        <li>Posts: <span>{{profile.post_count}}</span></li>
       </ul>
     </div>
     <div class="center-block text-center" v-if="profile.username!=auth.username">
@@ -49,14 +49,17 @@
     },
     methods: {
       fetchProfile(){
-        this.$store.dispatch(PROFILE.FETCH, this.route.params.profile)
+        this.$store.dispatch(PROFILE.FETCH_DETAIL, this.route.params.profile)
                 .then((profile_result) => Object.assign(this.profile, profile_result))
                 .catch(() => this.$router.push({name: 'home'}))
       },
       clickFollowButton(){
         const action = this.profile.mefollow ? PROFILE.UNFOLLOW : PROFILE.FOLLOW;
         this.$store.dispatch(action, this.route.params.profile)
-                .then((mefollow) => this.profile.mefollow = mefollow)
+                .then((mefollow) => {
+                  this.profile.mefollow = mefollow
+                  this.profile.followers += mefollow ? 1 : -1
+                })
       }
     }
   }

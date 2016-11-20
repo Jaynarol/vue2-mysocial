@@ -10,7 +10,7 @@
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <router-link :to="{ path: auth.username }">Profile</router-link>
+            <router-link :to="{ path: auth.username }">@{{auth.username}}</router-link>
           </li>
           <li><a @click.prevent="logout" href="#">Logout</a></li>
         </ul>

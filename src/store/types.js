@@ -8,7 +8,8 @@ export const FRIENDS = Object.freeze({
 })
 
 export const PROFILE = Object.freeze({
-  FETCH: 'PROFILE_FETCH',
+  FETCH_DETAIL: 'PROFILE_FETCH',
   FOLLOW: 'PROFILE_FOLLOW',
-  UNFOLLOW: 'PROFILE_UNFOLLOW'
+  UNFOLLOW: 'PROFILE_UNFOLLOW',
+  FETCH_POSTS: 'FETCH_POSTS'
 })

@@ -16,10 +16,16 @@
     <div class="form-group">
       <input type="password" class="form-control" placeholder="Confirm Password">
     </div>
-    <button class="btn btn-azure">Register</button>
+    <button class="btn btn-azure" @click="clickRegister">Register</button>
   </div>
 </template>
 
 <script>
-  export default{}
+  export default{
+    methods:{
+      clickRegister(){
+        alert('==============================\n\nThis function not available (lazy :P)\n\n===============================')
+      }
+    }
+  }
 </script>
