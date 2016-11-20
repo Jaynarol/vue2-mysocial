@@ -92,4 +92,15 @@ export const apiFetchPost = (profile) => {
   return user.posts.map((post)=>({name:user.name, username:user.username, image:user.image, ...post}))
 }
 
+export const apiFetchHomePost = () => {
+  return Mock.reduce((posts, profile) => [
+        ...posts, ...profile.posts.map((post)=>({
+          name: profile.name,
+          username: profile.username,
+          image: profile.image, ...post
+        }))
+      ], [])
+      .sort(()=> 0.2 - Math.random())
+      .slice(0, 10)
+}
 

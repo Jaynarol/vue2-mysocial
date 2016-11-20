@@ -1,5 +1,5 @@
 import { FRIENDS } from '../types'
-import { apiFetchFriends } from '../mock'
+import { apiFetchFriends, apiFetchHomePost } from '../mock'
 
 export default {
   state: [],
@@ -18,6 +18,14 @@ export default {
   actions: {
     [FRIENDS.FETCH_DETAIL]({commit, rootState}){
       commit('FriendFetchSuccess', apiFetchFriends(rootState.auth.username))
+    },
+    [FRIENDS.FETCH_HOMEPOST]({rootState}){
+      return new Promise((resolve, reject)=> {
+        setTimeout(()=> {
+          const homeposts = apiFetchHomePost()
+          resolve(homeposts)
+        }, 200 /* simulate delay connect api server */)
+      })
     }
   }
 }

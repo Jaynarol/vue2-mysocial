@@ -4,7 +4,8 @@ export const AUTH = Object.freeze({
 })
 
 export const FRIENDS = Object.freeze({
-  FETCH: 'FRIENDS_FETCH'
+  FETCH: 'FRIENDS_FETCH',
+  FETCH_HOMEPOST: 'FRIENDS_FETCH_HOMEPOST'
 })
 
 export const PROFILE = Object.freeze({
