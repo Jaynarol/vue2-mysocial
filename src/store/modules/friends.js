@@ -15,6 +15,12 @@ export default {
     FriendFetchSuccess(state, friendList) {
       state.splice(0, state.length)
       state.push(...friendList)
+    },
+    FriendFollow(state, profile) {
+      state.find(({username}) => username===profile).mefollow = true
+    },
+    FriendUnfollow(state, profile) {
+      state.find(({username}) => username===profile).mefollow = false
     }
   },
   actions: {

@@ -1,6 +1,8 @@
 import { AUTH } from '../types'
 
-const mock = (username) => ({username, token:'faketoken'})
+const mock = (username) => (
+  {username, token:'faketoken'}
+)
 
 const initial = {
   token: null,

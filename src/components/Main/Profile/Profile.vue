@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div class="center-block text-center" v-if="profile.username!=auth.username">
-      <button class="btn" :class="{'btn-success': profile.mefollow || hoverFollowButton}" @mouseover="hoverFollowButton=true" @mouseout="hoverFollowButton=false">{{ profile.mefollow ? hoverFollowButton ? 'Unfollow' : 'Following' : 'Follow'}}</button>
+      <button class="btn" @click="clickFollowButton" :class="{'btn-success': profile.mefollow || hoverFollowButton}" @mouseover="hoverFollowButton=true" @mouseout="hoverFollowButton=false">{{ profile.mefollow ? hoverFollowButton ? 'Unfollow' : 'Following' : 'Follow'}}</button>
     </div>
   </div>
 </template>
@@ -52,6 +52,11 @@
         this.$store.dispatch(PROFILE.FETCH, this.route.params.profile)
                 .then((profile_result) => Object.assign(this.profile, profile_result))
                 .catch(() => this.$router.push({name: 'home'}))
+      },
+      clickFollowButton(){
+        const action = this.profile.mefollow ? PROFILE.UNFOLLOW : PROFILE.FOLLOW;
+        this.$store.dispatch(action, this.route.params.profile)
+                .then((mefollow) => this.profile.mefollow = mefollow)
       }
     }
   }

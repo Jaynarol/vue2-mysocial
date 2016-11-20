@@ -11,6 +11,7 @@ const mock = [
 ]
 
 export default {
+  state:[],
   actions: {
     [PROFILE.FETCH]({}, profile){
       return new Promise((resolve, reject) => {
@@ -18,6 +19,22 @@ export default {
           const found_profile = mock.find(({username}) => username === profile)
           found_profile ? resolve(found_profile) : reject()
         }, 300 /* simulate delay connect api server */)
+      })
+    },
+    [PROFILE.FOLLOW]({commit}, profile){
+      return new Promise((resolve, reject) => {
+        mock.find(({username}) => username===profile).mefollow = true // simulate api change in server
+
+        commit('FriendFollow', profile)
+        resolve(true)
+      })
+    },
+    [PROFILE.UNFOLLOW]({commit}, profile){
+      return new Promise((resolve, reject) => {
+        mock.find(({username}) => username===profile).mefollow = false // simulate api change in server
+
+        commit('FriendUnfollow', profile)
+        resolve(false)
       })
     }
   }
