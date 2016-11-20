@@ -9,7 +9,7 @@
         <li>Posts: <span>{{profile.post_count}}</span></li>
       </ul>
     </div>
-    <div class="center-block text-center" v-if="profile.username!=auth.username">
+    <div class="center-block text-center" v-if="profile.username!=auth.username && auth.login">
       <button class="btn" @click="clickFollowButton" :class="{'btn-success': profile.mefollow || hoverFollowButton}" @mouseover="hoverFollowButton=true" @mouseout="hoverFollowButton=false">{{ profile.mefollow ? hoverFollowButton ? 'Unfollow' : 'Following' : 'Follow'}}</button>
     </div>
   </div>
