@@ -10,7 +10,7 @@
     </div>
 
     <div class="box-body" style="display: block;">
-      <p>{{post.message}}</p>
+      <p class="message">{{post.message}}</p>
       <div class="box-action">
         <button type="button" class="btn btn-default btn-xs" @click="clickLike">Like</button>
         <span class="pull-right text-muted">{{post.like}} likes</span>
@@ -36,5 +36,10 @@
 <style scoped>
   .box-action{
     margin-top: 20px;
+  }
+  .message{
+    display: block;
+    white-space: pre-wrap;
+    line-height: 1.8em;
   }
 </style>

@@ -1,5 +1,5 @@
 import { PROFILE } from '../types'
-import { apiFetchProfile, apiUpdateFollow, apiFetchPost } from '../mock'
+import { apiFetchProfile, apiUpdateFollow, apiFetchPost, apiPostStatus } from '../mock'
 
 export default {
   state: [],
@@ -34,6 +34,14 @@ export default {
           const postList = apiFetchPost(profile)
           resolve(postList)
         }, 300 /* simulate delay connect api server */)
+      })
+    },
+    [PROFILE.POST_MYSTATUS]({rootState}, mystatus){
+      return new Promise((resolve, reject) => {
+        setTimeout(()=> {
+          const newpost = apiPostStatus(rootState.auth.username, mystatus)
+          resolve(newpost)
+        }, 100 /* simulate delay connect api server */)
       })
     }
   }
