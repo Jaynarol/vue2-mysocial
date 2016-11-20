@@ -1,0 +1,8 @@
+version: "2"
+services:
+
+  container:
+    build: .
+    image: jaynarol/vue2-mysocial
+    ports:
+      - 8081:80
